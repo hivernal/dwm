@@ -5,14 +5,13 @@ dwm is an extremely fast, small, and dynamic window manager for X.
 
 Getting started
 ------------
-Install pamixer, xbacklight, JetBrainsMono Nerd Font.
-Move autostart.sh script(status bar) to ~/.dwm directort:
+Install pamixer, xbacklight, xkb-switch, JetBrainsMono Nerd Font.
+Move autostart.sh script(status bar) to ~/.dwm directory:
     
-    mkdir ~/.dwm && mv autostart.sh ~/.dwm directory
+    mkdir -p ~/.dwm && mv autostart.sh ~/.dwm
 
 Edit config.mk to match your local setup (dwm is installed into
 the /usr/local namespace by default).
-
 Afterwards enter the following command to build and install dwm (if
 necessary as root):
 
