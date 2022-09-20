@@ -1,11 +1,15 @@
+**Screenshot**
+--------------
+
 ![Screenshot](screenshot.png)
+
 dwm - dynamic window manager
-============================
+----------------------------
 dwm is an extremely fast, small, and dynamic window manager for X.
 
 
 Getting started
-------------
+----------------
 Install pamixer, xbacklight, xkb-switch, JetBrainsMono Nerd Font.
 Move autostart.sh script(status bar) to ~/.dwm directory:
     
