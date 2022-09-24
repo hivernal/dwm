@@ -56,12 +56,16 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", black, "-nf", white, "-sb", gray, "-sf", white, NULL };
 // static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_bg, "-sf", sel_fg, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", black, "-nf", white, "-sb", gray, "-sf", white, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *upvol[]   = { "/usr/bin/pamixer", "-i", "5",     NULL };
-static const char *downvol[] = { "/usr/bin/pamixer", "-d", "5",     NULL };
-static const char *mutevol[] = { "/usr/bin/pamixer", "-t",  NULL };
+// static const char *upvol[]   = { "/usr/bin/pamixer", "-i", "5",     NULL };
+// static const char *downvol[] = { "/usr/bin/pamixer", "-d", "5",     NULL };
+// static const char *mutevol[] = { "/usr/bin/pamixer", "-t",  NULL };
+static const char *upvol[]   = { "/usr/bin/amixer", "sset", "Master", "5%+",     NULL };
+static const char *downvol[] = { "/usr/bin/amixer", "sset", "Master", "5%-",     NULL };
+static const char *mutevol[] = { "/usr/bin/amixer", "sset", "Master", "toggle",  NULL };
+
 static const char *light_up[] = {"/usr/bin/xbacklight", "-inc", "5", NULL};
 static const char *light_down[] = {"/usr/bin/xbacklight", "-dec", "5", NULL};
 static const char *poweroff[] = {"/usr/bin/shutdown", "-h", "now", NULL};

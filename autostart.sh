@@ -1,6 +1,11 @@
 #!/bin/bash
 layout () {
-  printf "[ KEY $(xkb-switch) ]"
+  # printf "[ KEY $(xkb-switch) ]"
+	if [[ $(xset -q | grep LED | awk '{ print $10 }') = 00000000 ]]; then
+  printf "[ KEY US ]"
+else
+  printf "[ KEY RU ]"
+	fi
 }
 clock() {
   printf "[ $(date +%H:%M) ]" > /tmp/time
@@ -16,7 +21,12 @@ memory () {
   printf "[ MEM $(free -h | awk '(NR==2){ print $3 }') ]" > /tmp/memory
 }
 volume () {
-  echo "[ VOL $(pamixer --get-volume-human) ]"
+	if [[ $(awk -F"[][]" '/dB/ { print $6 }' <(amixer sget Master)) = off ]]; then
+		printf "[ VOL muted ]"
+  else
+		printf "[ VOL $(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master))% ]"
+	fi
+  # echo "[ VOL $(pamixer --get-volume-human) ]"
 }
 battery () {
   printf "[ BAT $(cat /sys/class/power_supply/BAT0/capacity)%% ]"
