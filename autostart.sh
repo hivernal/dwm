@@ -3,9 +3,9 @@
 layout () {
 	printf "[ KEY $(xkb-switch) ]"
 	# 	if [[ $(xset -q | grep LED | awk '{ print $10 }') = 00000000 ]]; then
-	#   printf "[ KEY US ]"
+	#   printf "[ KEY us ]"
 	# else
-	#   printf "[ KEY RU ]"
+	#   printf "[ KEY ru ]"
 	# 	fi
 }
 
@@ -15,7 +15,7 @@ clock() {
 
 ssid () {
 	# SSID=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)
-	if [[ $(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-) = "" ]]; then
+	if [[ $(nmcli | grep connected | cut -b 20-) = "" ]]; then
 		printf "[ NET disconnected ]" > /tmp/ssid
 	else
 		printf "[ NET $(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-) ]" > /tmp/ssid
@@ -27,17 +27,17 @@ memory () {
 }
 
 volume () {
-	if [[ $(awk -F"[][]" '/dB/ { print $6 }' <(amixer sget Master)) = off ]]; then
-		printf "[ VOL muted ]"
-	else
-		printf "[ VOL $(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master))% ]"
-	fi
+	# if [[ $(awk -F"[][]" '/dB/ { print $6 }' <(amixer sget Master)) = off ]]; then
+		# printf "[ VOL muted ]"
+	# else
+  # printf "[ VOL $(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master))% ]"
+	# fi
+  echo "[ VOL $(pamixer --get-volume-human) ]"
 }
 
 battery () {
 	printf "[ BAT $(< /sys/class/power_supply/BAT0/capacity)%% ]"
 }
-
 
 parallel1() {
 	while true; do
@@ -59,6 +59,6 @@ parallel1 &
 parallel2 &
 while true; do
 	xsetroot -name "$(layout) $(volume) $(< /tmp/memory) $(battery) $(< /tmp/ssid) $(< /tmp/time)"
-	sleep 0.5s
+	sleep 1
 done &
 # slstatus &
