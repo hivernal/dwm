@@ -54,7 +54,7 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd)                                       \
   {                                                      \
-    .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL } \
+    .v = (const char *[]) { "/bin/bash", "-c", cmd, NULL } \
   }
 
 /* commands */
@@ -65,9 +65,9 @@ static const char *dmenucmd[] = {
 };
 static const char *termcmd[]		 = { "alacritty", NULL };
 
-static const char *volumeUp[]   = { "/usr/bin/amixer", "sset", "Master", "5%+",		 NULL };
-static const char *volumeDown[] = { "/usr/bin/amixer", "sset", "Master", "5%-",		 NULL };
-static const char *volumeMute[] = { "/usr/bin/amixer", "sset", "Master", "toggle", NULL };
+static const char *volumeUp[]   = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%",	   NULL };
+static const char *volumeDown[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%",	   NULL };
+static const char *volumeMute[] = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
 
 static const char *lightUp[]		 = { "/usr/bin/xbacklight", "-inc", "5",	 NULL };
 static const char *lightDown[]	 = { "/usr/bin/xbacklight", "-dec", "5",	 NULL };
