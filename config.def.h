@@ -6,9 +6,9 @@ static const unsigned int snap		 = 32;
 static const int showbar					 = 1;
 static const int topbar						 = 1;
 static const char *fonts[]				 = { "JetBrainsMono Nerd Font:style=Bold:size=12" };
-static const char white[]					 = "#fcfcfc";
-static const char black[]					 = "#282c34";
-static const char gray[]					 = "#5c6667";
+static const char white[]					 = "#d2d9f8";
+static const char black[]					 = "#1a1b26";
+static const char gray[]					 = "#5e5f67";
 static const char *colors[][3]		 = {
     /*               fg     bg     border			*/
 		[SchemeNorm] = { white, black, black },
