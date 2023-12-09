@@ -11,7 +11,7 @@ static const char black[]					 = "#1a1b26";
 static const char gray[]					 = "#5e5f67";
 static const char *colors[][3]		 = {
     /*               fg     bg     border			*/
-		[SchemeNorm] = { white, black, black },
+		[SchemeNorm] = { white, black, gray },
     [SchemeSel]	 = { white, gray,  white },
 };
 
@@ -56,21 +56,21 @@ static const Layout layouts[] = {
 static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
-static const char *volumeUp[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%",	   NULL };
-static const char *volumeDown[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%",	   NULL };
-static const char *volumeMute[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle",	   NULL };
-static const char *lightUp[]		 = { "sudo", "xbacklight", "-inc", "5",	 NULL };
-static const char *lightDown[]	 = { "sudo", "xbacklight", "-dec", "5",	 NULL };
-static const char *poweroff[]		 = { "/usr/bin/shutdown",		"-h",		"now", NULL };
-static const char *screenshot[]  = { "/usr/bin/flameshot",	"gui",				 NULL };
+static const char *volume_up[]   = { "/home/nikita/.config/dwm/volume.sh", "up",	   NULL };
+static const char *volume_down[]   = { "/home/nikita/.config/dwm/volume.sh", "down",	   NULL };
+static const char *volume_mute[] = { "/home/nikita/.config/dwm/volume.sh", "mute",	   NULL };
+static const char *brightness_up[]		 = { "/home/nikita/.config/dwm/brightness.sh", "up",	 NULL };
+static const char *brightness_down[]	 = { "/home/nikita/.config/dwm/brightness.sh", "down",	 NULL };
+static const char *poweroff[]		 = { "systemctl",	"poweroff", NULL };
+static const char *screenshot[]  = { "flameshot",	"gui", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ 0,									 XF86XK_AudioRaiseVolume,  spawn,					 { .v = volumeUp } },
-  { 0,									 XF86XK_AudioLowerVolume,  spawn,					 { .v = volumeDown } },
-	{ 0,									 XF86XK_AudioMute,				 spawn,					 { .v = volumeMute } },
-  { 0,									 XF86XK_MonBrightnessUp,   spawn,					 { .v = lightUp } },
-  { 0,									 XF86XK_MonBrightnessDown, spawn,					 { .v = lightDown } },
+	{ 0,									 XF86XK_AudioRaiseVolume,  spawn,					 { .v = volume_up } },
+  { 0,									 XF86XK_AudioLowerVolume,  spawn,					 { .v = volume_down } },
+	{ 0,									 XF86XK_AudioMute,				 spawn,					 { .v = volume_mute } },
+  { 0,									 XF86XK_MonBrightnessUp,   spawn,					 { .v = brightness_up } },
+  { 0,									 XF86XK_MonBrightnessDown, spawn,					 { .v = brightness_down } },
   { 0,									 XK_Print,								 spawn,					 { .v = screenshot } },
   { MODKEY | ShiftMask,  XK_q,										 spawn,					 { .v = poweroff } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
