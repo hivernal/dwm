@@ -54,7 +54,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", NULL };
-static const char *termcmd[]  = { "kitty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 static const char *volume_up[]   = { "/home/nikita/.config/dwm/volume.sh", "up",	   NULL };
 static const char *volume_down[]   = { "/home/nikita/.config/dwm/volume.sh", "down",	   NULL };
