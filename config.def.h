@@ -5,7 +5,7 @@ static const unsigned int borderpx = 3;
 static const unsigned int snap		 = 32;
 static const int showbar					 = 1;
 static const int topbar						 = 1;
-static const char *fonts[]				 = { "JetBrainsMono NF:style=Bold:size=12" };
+static const char *fonts[]				 = { "JetBrainsMono NF:style=Bold:size=13" };
 static const char white[]					 = "#d2d9f8";
 static const char black[]					 = "#1a1b26";
 static const char gray[]					 = "#5e5f67";
